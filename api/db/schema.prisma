@@ -1,18 +1,27 @@
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native"]
+}
+
 datasource db {
-  provider = "sqlite"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
-generator client {
-  provider      = "prisma-client-js"
-  binaryTargets = "native"
+model Job {
+  id          Int     @id @default(autoincrement())
+  title       String?
+  city        String?
+  salary      Int?
+  description String?
 }
 
-// Define your own datamodels here and run `yarn redwood prisma migrate dev`
-// to create migrations for them and apply to your dev DB.
-// TODO: Please remove the following example:
-model UserExample {
-  id    Int     @id @default(autoincrement())
-  email String  @unique
-  name  String?
+model lodging {
+  id          Int     @id @default(autoincrement())
+  url         String
+  Type        String?
+  area        Int?
+  city        String?
+  price       Int?
+  description String?
 }
