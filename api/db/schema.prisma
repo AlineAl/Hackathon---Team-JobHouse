@@ -14,6 +14,9 @@ model Job {
   city        String?
   salary      Int?
   description String?
+  employer String?
+  longitude Int
+  latitude Int
 }
 
 model lodging {
@@ -24,4 +27,12 @@ model lodging {
   city        String?
   price       Int?
   description String?
+  longitude Int
+  latitude Int
+}
+
+model department {
+  id   Int     @id @default(autoincrement())
+  code Int?
+  city String?
 }
