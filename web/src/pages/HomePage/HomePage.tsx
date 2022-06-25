@@ -1,5 +1,5 @@
 // import { Link, routes } from '@redwoodjs/router'
-import { MetaTags } from '@redwoodjs/web'
+import { MetaTags, useQuery } from '@redwoodjs/web'
 import {
   Form,
   Submit,
@@ -9,23 +9,18 @@ import {
 } from '@redwoodjs/forms'
 import { navigate, routes } from '@redwoodjs/router'
 
+import DepartmentsCell from 'src/components/DepartmentsCell'
+
 import background from '/public/img/background.png'
 
-const jobs = [
-  { id: 1, name: 'tech' },
-  { id: 2, name: 'salade' },
-  { id: 3, name: 'tomate' },
-  { id: 4, name: 'oignon' },
-  { id: 5, name: 'sauce' },
-]
-
-const departments = [
-  { id: 1, name: 'Ain' },
-  { id: 2, name: 'Aisne' },
-  { id: 3, name: 'Loiret' },
-  { id: 4, name: 'Yvelines' },
-  { id: 5, name: 'Iles-de-France' },
-]
+export const JOBS_QUERY = gql`
+  query JobsQuery {
+    jobs {
+      id
+      title
+    }
+  }
+`
 
 interface FormValues {
   input: string
@@ -33,6 +28,8 @@ interface FormValues {
 
 const HomePage = () => {
   const formMethods = useForm()
+  const { data } = useQuery(JOBS_QUERY)
+
   const onSubmit: SubmitHandler<FormValues> = (data) => {
     navigate(routes.resultsPage(data))
   }
@@ -63,13 +60,15 @@ const HomePage = () => {
                 className="rounded-xl bg-white mr-5 p-1 px-2 "
                 name="job"
                 id="job"
+                placeholder="Recherche"
               >
-                {jobs.map((job) => (
-                  <option key={job.id} value={job.id}>
-                    {job.name}
-                  </option>
-                ))}
-                <option value="job">Rechercher un job</option>
+                <option value="all">Rechercher un job</option>
+                {data &&
+                  data.jobs.map((job) => (
+                    <option key={job.id} value={job.id}>
+                      {job.title}
+                    </option>
+                  ))}
               </SelectField>
 
               <SelectField
@@ -77,12 +76,8 @@ const HomePage = () => {
                 name="departement"
                 id="departement"
               >
-                {departments.map((department) => (
-                  <option key={department.id} value={department.id}>
-                    {department.name}
-                  </option>
-                ))}
-                <option value="departement"> departement </option>
+                <option value="all">Département</option>
+                <DepartmentsCell />
               </SelectField>
             </div>
             <div className=" flex justify-center  ">
