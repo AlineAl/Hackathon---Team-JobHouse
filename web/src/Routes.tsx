@@ -13,6 +13,7 @@ const Routes = () => {
   return (
     <Router>
       <Route path="/home" page={HomePage} name="home" />
+      <Route path="/job-page" page={JobPagePage} name="jobPage" />
       <Route notfound page={NotFoundPage} />
     </Router>
   )
