@@ -1,9 +1,38 @@
 // import { Link, routes } from '@redwoodjs/router'
-import { MetaTags } from '@redwoodjs/web'
+import { MetaTags, useQuery } from '@redwoodjs/web'
+import {
+  Form,
+  Submit,
+  SelectField,
+  SubmitHandler,
+  useForm,
+} from '@redwoodjs/forms'
+import { navigate, routes } from '@redwoodjs/router'
+
+import DepartmentsCell from 'src/components/DepartmentsCell'
 
 import background from '/public/img/background.png'
 
+export const JOBS_QUERY = gql`
+  query JobsQuery {
+    jobs {
+      id
+      title
+    }
+  }
+`
+
+interface FormValues {
+  input: string
+}
+
 const HomePage = () => {
+  const formMethods = useForm()
+  const { data } = useQuery(JOBS_QUERY)
+
+  const onSubmit: SubmitHandler<FormValues> = (data) => {
+    navigate(routes.resultsPage(data))
+  }
   return (
     <>
       <MetaTags title="Home" description="Home page" />
@@ -25,33 +54,36 @@ const HomePage = () => {
             <h1 className="text-center mb-2 text-6xl">JobHouse</h1>
           </div>
 
-          <div className="flex justify-center mb-6">
-            <select
-              className="rounded-xl bg-white mr-5 p-1 px-2 "
-              name="job"
-              id="job"
-            >
-              {/*{jobs.map((job) =>
-              <option value ={job.id}> {job.name}</option>*/}
-              <option value="job">Rechercher un job</option>
-            </select>
+          <Form formMethods={formMethods} onSubmit={onSubmit}>
+            <div className="flex justify-center mb-6">
+              <SelectField
+                className="rounded-xl bg-white mr-5 p-1 px-2 "
+                name="job"
+                id="job"
+                placeholder="Recherche"
+              >
+                <option value="all">Rechercher un job</option>
+                {data &&
+                  data.jobs.map((job) => (
+                    <option key={job.id} value={job.id}>
+                      {job.title}
+                    </option>
+                  ))}
+              </SelectField>
 
-            <select
-              className="rounded-xl bg-white px-2"
-              name="departement"
-              id="departement"
-            >
-              {/*{departements.map((departement) =>
-              <option value={departement.id]> {departement.name}</option>*/}
-              <option value="departement"> departement </option>
-            </select>
-          </div>
-
-          <div className=" flex justify-center  ">
-            <button className="rounded-xl mr-2 bg-white px-2">
-              Rechercher{' '}
-            </button>
-          </div>
+              <SelectField
+                className="rounded-xl bg-white px-2"
+                name="departement"
+                id="departement"
+              >
+                <option value="all">Département</option>
+                <DepartmentsCell />
+              </SelectField>
+            </div>
+            <div className=" flex justify-center  ">
+              <Submit className="rounded-xl mr-2 bg-white px-2">Save</Submit>
+            </div>
+          </Form>
         </div>
       </div>
     </>
