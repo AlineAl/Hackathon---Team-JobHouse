@@ -11,7 +11,8 @@ import { navigate, routes } from '@redwoodjs/router'
 
 import DepartmentsCell from 'src/components/DepartmentsCell'
 
-import background from '/public/img/background.png'
+import background from '/public/img/tom-rumble-7lvzopTxjOU-unsplash.jpg'
+import logo from '/public/img/trouve_ton_toit__1_-removebg-preview.png'
 
 export const JOBS_QUERY = gql`
   query JobsQuery {
@@ -39,19 +40,14 @@ const HomePage = () => {
 
       <div
         style={{ backgroundImage: `url(${background})` }}
-        className="bg-cover h-screen"
+        className="bg-cover h-screen pt-28"
       >
-        <div>
-          <div className="flex justify-center pt-10 mb-6">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-20 w-20"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-            >
-              <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
-            </svg>
-            <h1 className="text-center mb-2 text-6xl">JobHouse</h1>
+        <div className="bg-zinc-50/50 pb-10">
+          <div className="flex flex-col items-center text-center pt-10 mb-6">
+            <img src={logo} alt="" />
+            <p className="text-3xl text-black font-bold">
+              Trouvez votre logement
+            </p>
           </div>
 
           <Form formMethods={formMethods} onSubmit={onSubmit}>
@@ -62,7 +58,7 @@ const HomePage = () => {
                 id="job"
                 placeholder="Recherche"
               >
-                <option value="all">Rechercher un job</option>
+                <option value="all">Rechercher un logement</option>
                 {data &&
                   data.jobs.map((job) => (
                     <option key={job.id} value={job.id}>
