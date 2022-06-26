@@ -40,9 +40,9 @@ const HomePage = () => {
 
       <div
         style={{ backgroundImage: `url(${background})` }}
-        className="bg-cover h-screen pt-28"
+        className="bg-cover h-screen flex justify-center items-center"
       >
-        <div className="bg-zinc-50/50 pb-10">
+        <div className="bg-zinc-50/80 p-10 w-min">
           <div className="flex flex-col items-center text-center pt-10 mb-6">
             <img src={logo} alt="" />
             <p className="text-3xl text-black font-bold">
@@ -68,7 +68,7 @@ const HomePage = () => {
               </SelectField>
 
               <SelectField
-                className="rounded-xl bg-white px-2"
+                className="rounded-xl bg-white px-4"
                 name="departement"
                 id="departement"
               >
@@ -77,7 +77,7 @@ const HomePage = () => {
               </SelectField>
             </div>
             <div className=" flex justify-center  ">
-              <Submit className="rounded-xl mr-2 bg-white px-2">
+              <Submit className="rounded-xl mr-2 bg-white px-4">
                 Rechercher
               </Submit>
             </div>

@@ -14,6 +14,8 @@ import image5 from '/public/img/AdobeStock_371383825.jpeg'
 
 import { MetaTags } from '@redwoodjs/web'
 
+import NavBar from 'src/components/NavBar/NavBar'
+
 const LodgingDescriptionPage = () => {
   return (
     <>
@@ -21,7 +23,7 @@ const LodgingDescriptionPage = () => {
         title="LodgingDescription"
         description="LodgingDescription page"
       />
-
+      <NavBar />
       <section className="flex justify-around mx-28 my-12">
         <div className="w-[60%] p-6">
           <h1 className="text-2xl font-bold">Intitulé du logement</h1>
