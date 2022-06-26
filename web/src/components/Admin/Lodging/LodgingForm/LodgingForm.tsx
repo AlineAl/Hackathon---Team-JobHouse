@@ -8,36 +8,8 @@ import {
   Submit,
 } from '@redwoodjs/forms'
 
-
-
 const LodgingForm = (props) => {
   const onSubmit = (data) => {
-
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
     props.onSave(data, props?.lodging?.id)
   }
 
@@ -50,7 +22,7 @@ const LodgingForm = (props) => {
           titleClassName="rw-form-error-title"
           listClassName="rw-form-error-list"
         />
-      
+
         <Label
           name="url"
           className="rw-label"
@@ -58,15 +30,14 @@ const LodgingForm = (props) => {
         >
           Url
         </Label>
-        
-          <TextField
-            name="url"
-            defaultValue={props.lodging?.url}
-            className="rw-input"
-            errorClassName="rw-input rw-input-error"
-            validation={{ required: true }}
-          />
-        
+
+        <TextField
+          name="url"
+          defaultValue={props.lodging?.url}
+          className="rw-input"
+          errorClassName="rw-input rw-input-error"
+          validation={{ required: true }}
+        />
 
         <FieldError name="url" className="rw-field-error" />
 
@@ -77,14 +48,13 @@ const LodgingForm = (props) => {
         >
           Type
         </Label>
-        
-          <TextField
-            name="Type"
-            defaultValue={props.lodging?.Type}
-            className="rw-input"
-            errorClassName="rw-input rw-input-error"
-          />
-        
+
+        <TextField
+          name="Type"
+          defaultValue={props.lodging?.Type}
+          className="rw-input"
+          errorClassName="rw-input rw-input-error"
+        />
 
         <FieldError name="Type" className="rw-field-error" />
 
@@ -95,14 +65,13 @@ const LodgingForm = (props) => {
         >
           Area
         </Label>
-        
-          <NumberField
-            name="area"
-            defaultValue={props.lodging?.area}
-            className="rw-input"
-            errorClassName="rw-input rw-input-error"
-          />
-        
+
+        <NumberField
+          name="area"
+          defaultValue={props.lodging?.area}
+          className="rw-input"
+          errorClassName="rw-input rw-input-error"
+        />
 
         <FieldError name="area" className="rw-field-error" />
 
@@ -113,14 +82,13 @@ const LodgingForm = (props) => {
         >
           City
         </Label>
-        
-          <TextField
-            name="city"
-            defaultValue={props.lodging?.city}
-            className="rw-input"
-            errorClassName="rw-input rw-input-error"
-          />
-        
+
+        <TextField
+          name="city"
+          defaultValue={props.lodging?.city}
+          className="rw-input"
+          errorClassName="rw-input rw-input-error"
+        />
 
         <FieldError name="city" className="rw-field-error" />
 
@@ -131,14 +99,13 @@ const LodgingForm = (props) => {
         >
           Price
         </Label>
-        
-          <NumberField
-            name="price"
-            defaultValue={props.lodging?.price}
-            className="rw-input"
-            errorClassName="rw-input rw-input-error"
-          />
-        
+
+        <NumberField
+          name="price"
+          defaultValue={props.lodging?.price}
+          className="rw-input"
+          errorClassName="rw-input rw-input-error"
+        />
 
         <FieldError name="price" className="rw-field-error" />
 
@@ -149,14 +116,13 @@ const LodgingForm = (props) => {
         >
           Description
         </Label>
-        
-          <TextField
-            name="description"
-            defaultValue={props.lodging?.description}
-            className="rw-input"
-            errorClassName="rw-input rw-input-error"
-          />
-        
+
+        <TextField
+          name="description"
+          defaultValue={props.lodging?.description}
+          className="rw-input"
+          errorClassName="rw-input rw-input-error"
+        />
 
         <FieldError name="description" className="rw-field-error" />
 
@@ -167,15 +133,14 @@ const LodgingForm = (props) => {
         >
           Longitude
         </Label>
-        
-          <NumberField
-            name="longitude"
-            defaultValue={props.lodging?.longitude}
-            className="rw-input"
-            errorClassName="rw-input rw-input-error"
-            validation={{ required: true }}
-          />
-        
+
+        <NumberField
+          name="longitude"
+          defaultValue={props.lodging?.longitude}
+          className="rw-input"
+          errorClassName="rw-input rw-input-error"
+          validation={{ required: true }}
+        />
 
         <FieldError name="longitude" className="rw-field-error" />
 
@@ -186,23 +151,19 @@ const LodgingForm = (props) => {
         >
           Latitude
         </Label>
-        
-          <NumberField
-            name="latitude"
-            defaultValue={props.lodging?.latitude}
-            className="rw-input"
-            errorClassName="rw-input rw-input-error"
-            validation={{ required: true }}
-          />
-        
+
+        <NumberField
+          name="latitude"
+          defaultValue={props.lodging?.latitude}
+          className="rw-input"
+          errorClassName="rw-input rw-input-error"
+          validation={{ required: true }}
+        />
 
         <FieldError name="latitude" className="rw-field-error" />
 
         <div className="rw-button-group">
-          <Submit
-            disabled={props.loading}
-            className="rw-button rw-button-blue"
-          >
+          <Submit disabled={props.loading} className="rw-button rw-button-blue">
             Save
           </Submit>
         </div>
