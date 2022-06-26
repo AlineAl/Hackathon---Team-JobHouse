@@ -14,7 +14,6 @@ const Routes = () => {
     <Router>
       <Route path="/lodging-description" page={LodgingDescriptionPage} name="lodgingDescription" />
       <Route path="/" page={HomePage} name="home" />
-      <Route path="/job-page" page={JobPagePage} name="jobPage" />
       <Route path="/lodging-page" page={LodgingPagePage} name="lodgingPage" />
       <Route notfound page={NotFoundPage} />
     </Router>
