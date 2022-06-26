@@ -16,9 +16,9 @@ import logo from '/public/img/trouve_ton_toit__1_-removebg-preview.png'
 
 export const JOBS_QUERY = gql`
   query JobsQuery {
-    jobs {
+    lodgings {
       id
-      title
+      Type
     }
   }
 `
@@ -32,7 +32,7 @@ const HomePage = () => {
   const { data } = useQuery(JOBS_QUERY)
 
   const onSubmit: SubmitHandler<FormValues> = (data) => {
-    navigate(routes.resultsPage(data))
+    navigate(routes.lodgingPage(data))
   }
   return (
     <>
@@ -60,9 +60,9 @@ const HomePage = () => {
               >
                 <option value="all">Rechercher un logement</option>
                 {data &&
-                  data.jobs.map((job) => (
-                    <option key={job.id} value={job.id}>
-                      {job.title}
+                  data.lodgings.map((lodging) => (
+                    <option key={lodging.id} value={lodging.id}>
+                      {lodging.Type}
                     </option>
                   ))}
               </SelectField>
@@ -77,7 +77,9 @@ const HomePage = () => {
               </SelectField>
             </div>
             <div className=" flex justify-center  ">
-              <Submit className="rounded-xl mr-2 bg-white px-2">Save</Submit>
+              <Submit className="rounded-xl mr-2 bg-white px-2">
+                Rechercher
+              </Submit>
             </div>
           </Form>
         </div>
