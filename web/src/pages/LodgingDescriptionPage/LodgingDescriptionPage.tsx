@@ -5,7 +5,12 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/scrollbar'
-import jobImage from '/public/img/background.png'
+import image1 from '/public/img/AdobeStock_243643016.jpeg'
+import image4 from '/public/img/AdobeStock_243643016.jpeg'
+import image2 from '/public/img/AdobeStock_257275647.jpeg'
+import image6 from '/public/img/AdobeStock_292854875.jpeg'
+import image3 from '/public/img/AdobeStock_366363160.jpeg'
+import image5 from '/public/img/AdobeStock_371383825.jpeg'
 
 import { MetaTags } from '@redwoodjs/web'
 
@@ -56,55 +61,26 @@ const LodgingDescriptionPage = () => {
           scrollbar={true}
           grabCursor
           direction="vertical"
-          className="w-60 h-[40rem]"
+          className="w-60 mt-28 h-[25rem]"
         >
           <div>
-            <SwiperSlide className="w-60 rounded-lg border mb-4">
-              <img className="w-full rounded-t-lg" src={jobImage} alt="" />
-              <div className="p-6">
-                <p>Emploi</p>
-                <p>Ville</p>
-                <div className="flex items-center">
-                  <p>1400</p>
-                  <FaEuroSign />
-                </div>
-              </div>
+            <SwiperSlide className="w-60 rounded">
+              <img className="w-full rounded-lg" src={image1} alt="" />
             </SwiperSlide>
-
-            <SwiperSlide className="w-60 rounded-lg border mb-4">
-              <img className="w-full rounded-t-lg" src={jobImage} alt="" />
-              <div className="p-6">
-                <p>Emploi</p>
-                <p>Ville</p>
-                <div className="flex items-center">
-                  <p>1400</p>
-                  <FaEuroSign />
-                </div>
-              </div>
+            <SwiperSlide className="w-60">
+              <img className="w-full rounded-lg" src={image2} alt="" />
             </SwiperSlide>
-
-            <SwiperSlide className="w-60 rounded-lg border mb-4">
-              <img className="w-full rounded-t-lg" src={jobImage} alt="" />
-              <div className="p-6">
-                <p>Emploi</p>
-                <p>Ville</p>
-                <div className="flex items-center">
-                  <p>1400</p>
-                  <FaEuroSign />
-                </div>
-              </div>
+            <SwiperSlide className="w-60">
+              <img className="w-full rounded-lg" src={image3} alt="" />
             </SwiperSlide>
-
-            <SwiperSlide className="w-60 rounded-lg border mb-4">
-              <img className="w-full rounded-t-lg" src={jobImage} alt="" />
-              <div className="p-6">
-                <p>Emploi</p>
-                <p>Ville</p>
-                <div className="flex items-center">
-                  <p>1400</p>
-                  <FaEuroSign />
-                </div>
-              </div>
+            <SwiperSlide className="w-60">
+              <img className="w-full rounded-lg" src={image4} alt="" />
+            </SwiperSlide>
+            <SwiperSlide className="w-60">
+              <img className="w-full rounded-lg" src={image5} alt="" />
+            </SwiperSlide>
+            <SwiperSlide className="w-60">
+              <img className="w-full rounded-lg" src={image6} alt="" />
             </SwiperSlide>
           </div>
         </Swiper>
