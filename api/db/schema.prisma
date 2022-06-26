@@ -14,9 +14,9 @@ model Job {
   city        String?
   salary      Int?
   description String?
-  employer String?
-  longitude Int
-  latitude Int
+  employer    String?
+  longitude   Int
+  latitude    Int
 }
 
 model lodging {
@@ -27,8 +27,8 @@ model lodging {
   city        String?
   price       Int?
   description String?
-  longitude Int
-  latitude Int
+  longitude   Int
+  latitude    Int
 }
 
 model department {
