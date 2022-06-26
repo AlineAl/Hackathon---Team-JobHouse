@@ -7,6 +7,8 @@ import { MetaTags } from '@redwoodjs/web'
 import 'swiper/css'
 import 'swiper/css/navigation'
 
+import NavBar from 'src/components/NavBar/NavBar'
+
 import image1 from '../../../../web/public/img/AdobeStock_243643016.jpeg'
 import image4 from '../../../../web/public/img/AdobeStock_243643016.jpeg'
 import image2 from '../../../../web/public/img/AdobeStock_257275647.jpeg'
@@ -19,6 +21,7 @@ const LodgingPagePage = () => {
   return (
     <>
       <MetaTags title="LodgingPage" description="LodgingPage page" />
+      <NavBar />
       <section className="my-12 mx-6">
         <h1 className="text-2xl ml-6 mb-6">Logements à proximité</h1>
         <p className="ml-6 mb-6 text-gray-500">

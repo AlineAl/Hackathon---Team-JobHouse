@@ -3,7 +3,7 @@ import type { JobsQuery } from 'types/graphql'
 import type { CellSuccessProps, CellFailureProps } from '@redwoodjs/web'
 
 export const QUERY = gql`
-  query JobsQuery {
+  query JobsCellsQuery {
     jobs {
       id
     }
