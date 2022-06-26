@@ -7,12 +7,15 @@ import 'swiper/css/scrollbar'
 
 import { MetaTags } from '@redwoodjs/web'
 
-import lodImage from '../../../../web/public/img/AdobeStock_129250388.jpeg'
+import lodImage from '/public/img/AdobeStock_129250388.jpeg'
+
+import NavBar from 'src/components/NavBar/NavBar'
 
 const JobPagePage = () => {
   return (
     <>
       <MetaTags title="JobPage" description="JobPage page" />
+      <NavBar />
       <section className="flex justify-around mx-28 my-12">
         <div className="w-[60%] p-6">
           <h1 className="text-2xl font-bold">Nom du poste</h1>

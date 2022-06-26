@@ -1,13 +1,17 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import { Fragment } from 'react'
 
 import { Disclosure } from '@headlessui/react'
 import { BellIcon, MenuIcon, XIcon } from '@heroicons/react/outline'
+import clsx from 'clsx'
 
 import logo from '/public/img/trouve_ton_toit__1_-removebg-preview.png'
 
-import { Link, routes } from '@redwoodjs/router'
+import { Link, routes, useLocation } from '@redwoodjs/router'
 
-export default function Example() {
+export default function NavBar() {
+  const { pathname } = useLocation()
+
   return (
     <Disclosure as="nav" className="bg-white shadow">
       {({ open }) => (
@@ -44,14 +48,30 @@ export default function Example() {
                   </div>
                 </Link>
                 <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
-                  <a
-                    href="/lodging-page"
-                    className="border-indigo-500 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
+                  <Link
+                    to={routes.lodgingPage()}
+                    className={clsx(
+                      'text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium',
+                      pathname === routes.lodgingPage()
+                        ? 'border-indigo-500'
+                        : 'border-transparent hover:border-gray-300'
+                    )}
                   >
                     Logements
-                  </a>
+                  </Link>
+                  <Link
+                    to={routes.resultsPage()}
+                    className={clsx(
+                      'text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium',
+                      pathname === routes.resultsPage()
+                        ? 'border-indigo-500'
+                        : 'border-transparent hover:border-gray-300'
+                    )}
+                  >
+                    Jobs
+                  </Link>
                   <a
-                    href="/lodging-description"
+                    href="#"
                     className="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
                   >
                     Qui sommes-nous ?
@@ -91,7 +111,21 @@ export default function Example() {
               </Disclosure.Button>
               <Disclosure.Button
                 as="a"
-                href="/lodging-description"
+                href="/jobs"
+                className="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium"
+              >
+                Jobs
+              </Disclosure.Button>
+              <Disclosure.Button
+                as="a"
+                href="/job-page"
+                className="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium"
+              >
+                Job detail
+              </Disclosure.Button>
+              <Disclosure.Button
+                as="a"
+                href="#"
                 className="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium"
               >
                 Qui sommes-nous ?
