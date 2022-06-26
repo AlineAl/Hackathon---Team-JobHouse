@@ -1,9 +1,9 @@
 import type { Prisma } from '@prisma/client'
 
-export const standard = defineScenario<Prisma.lodgingCreateArgs>({
+export const standard = defineScenario<Prisma.LodgingCreateArgs>({
   lodging: {
-    one: { data: { url: 'String', longitude: 4372470, latitude: 5362392 } },
-    two: { data: { url: 'String', longitude: 6497133, latitude: 3923961 } },
+    one: { data: { url: 'String' } },
+    two: { data: { url: 'String' } },
   },
 })
 

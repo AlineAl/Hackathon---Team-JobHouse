@@ -2,13 +2,17 @@ export const schema = gql`
   type Lodging {
     id: Int!
     url: String!
-    Type: String
     area: Int
-    city: String
     price: Int
     description: String
-    longitude: Int!
-    latitude: Int!
+    lodgingTypeId: Int!
+    addressId: Int!
+    lessorId: Int
+    Type: LodgingType!
+    Address: Address!
+    Lessor: Lessor
+    constraints: [LodgingConstraint]!
+    User: [User]!
   }
 
   type Query {
@@ -18,24 +22,22 @@ export const schema = gql`
 
   input CreateLodgingInput {
     url: String!
-    Type: String
     area: Int
-    city: String
     price: Int
     description: String
-    longitude: Int!
-    latitude: Int!
+    lodgingTypeId: Int!
+    addressId: Int!
+    lessorId: Int
   }
 
   input UpdateLodgingInput {
     url: String
-    Type: String
     area: Int
-    city: String
     price: Int
     description: String
-    longitude: Int
-    latitude: Int
+    lodgingTypeId: Int
+    addressId: Int
+    lessorId: Int
   }
 
   type Mutation {

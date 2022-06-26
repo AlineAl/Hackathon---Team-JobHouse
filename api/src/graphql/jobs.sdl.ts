@@ -1,13 +1,20 @@
 export const schema = gql`
   type Job {
     id: Int!
-    title: String
-    city: String
+    title: String!
     salary: Int
     description: String
     employer: String
-    longitude: Int!
-    latitude: Int!
+    domainId: Int
+    sectorId: Int
+    addressId: Int!
+    lessorId: Int
+    Domain: JobDomain
+    Sector: JobSector
+    Address: Address!
+    Lessor: Lessor
+    Constraints: [JobConstraint]!
+    User: [User]!
   }
 
   type Query {
@@ -16,23 +23,25 @@ export const schema = gql`
   }
 
   input CreateJobInput {
-    title: String
-    city: String
+    title: String!
     salary: Int
     description: String
     employer: String
-    longitude: Int!
-    latitude: Int!
+    domainId: Int
+    sectorId: Int
+    addressId: Int!
+    lessorId: Int
   }
 
   input UpdateJobInput {
     title: String
-    city: String
     salary: Int
     description: String
     employer: String
-    longitude: Int
-    latitude: Int
+    domainId: Int
+    sectorId: Int
+    addressId: Int
+    lessorId: Int
   }
 
   type Mutation {

@@ -1,4 +1,8 @@
-import type { QueryResolvers, MutationResolvers } from 'types/graphql'
+import type {
+  QueryResolvers,
+  MutationResolvers,
+  LodgingResolvers,
+} from 'types/graphql'
 
 import { db } from 'src/lib/db'
 
@@ -34,4 +38,17 @@ export const deleteLodging: MutationResolvers['deleteLodging'] = ({ id }) => {
   return db.lodging.delete({
     where: { id },
   })
+}
+
+export const Lodging: LodgingResolvers = {
+  Type: (_obj, { root }) =>
+    db.lodging.findUnique({ where: { id: root.id } }).Type(),
+  Address: (_obj, { root }) =>
+    db.lodging.findUnique({ where: { id: root.id } }).Address(),
+  Lessor: (_obj, { root }) =>
+    db.lodging.findUnique({ where: { id: root.id } }).Lessor(),
+  constraints: (_obj, { root }) =>
+    db.lodging.findUnique({ where: { id: root.id } }).constraints(),
+  User: (_obj, { root }) =>
+    db.lodging.findUnique({ where: { id: root.id } }).User(),
 }

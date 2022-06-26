@@ -14,7 +14,7 @@ import DepartmentsCell from 'src/components/DepartmentsCell'
 import background from '/public/img/background.png'
 
 export const JOBS_QUERY = gql`
-  query JobsQuery {
+  query {
     jobs {
       id
       title

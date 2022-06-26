@@ -28,12 +28,10 @@ describe('lodgings', () => {
 
   scenario('creates a lodging', async () => {
     const result = await createLodging({
-      input: { url: 'String', longitude: 2220072, latitude: 8194133 },
+      input: { url: 'String' },
     })
 
     expect(result.url).toEqual('String')
-    expect(result.longitude).toEqual(2220072)
-    expect(result.latitude).toEqual(8194133)
   })
 
   scenario('updates a lodging', async (scenario: StandardScenario) => {

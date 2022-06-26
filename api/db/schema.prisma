@@ -5,34 +5,114 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
+  url      = env("TEST_DATABASE_URL")
+  // url      = env("DATABASE_URL")
+}
+
+model User {
+  id                Int       @id @default(autoincrement())
+  firstname         String?
+  lastname          String?
+  email             String?
+  role              Role      @default(USER)
+  FavoritesJobs     Job[]
+  FavoritesLodgings Lodging[]
+  Address           Address?  @relation(name: "Address", fields: [addressId], references: [id])
+  addressId         Int?
+  Lessor            Lessor?   @relation(fields: [lessorId], references: [id])
+  lessorId          Int?
+}
+
+enum Role {
+  USER          @map("user")
+  ADMIN         @map("admin")
+  LESSOR        @map("lessor")
+  LESSOR_ADMIN  @map("lessor_admin")
+}
+
+model Lessor {
+  id      Int       @id @default(autoincrement())
+  name    String
+  users   User[]
+  jobs    Job[]
+  Lodging Lodging[]
+}
+
+model Lodging {
+  id            Int                 @id @default(autoincrement())
+  url           String
+  area          Int?
+  price         Int?
+  description   String?
+  lodgingTypeId Int
+  addressId     Int
+  lessorId      Int?
+  Type          LodgingType         @relation(references: [id], fields: [lodgingTypeId])
+  Address       Address             @relation(references: [id], fields: [addressId])
+  Lessor        Lessor?             @relation(fields: [lessorId], references: [id])
+  constraints   LodgingConstraint[]
+  User          User[] // favorites
+}
+
+model LodgingConstraint {
+  id        Int      @id @default(autoincrement())
+  name      String
+  lodgingId Int?
+  Lodging   Lodging? @relation(fields: [lodgingId], references: [id])
+}
+
+model LodgingType {
+  id      Int       @id @default(autoincrement())
+  title   String
+  Lodging Lodging[]
 }
 
 model Job {
-  id          Int     @id @default(autoincrement())
-  title       String?
-  city        String?
+  id          Int             @id @default(autoincrement())
+  title       String
   salary      Int?
   description String?
-  employer String?
-  longitude Int
-  latitude Int
+  employer    String?
+  domainId    Int?
+  sectorId    Int?
+  addressId   Int
+  lessorId    Int?
+  Domain      JobDomain?      @relation(references: [id], fields: [domainId])
+  Sector      JobSector?      @relation(references: [id], fields: [sectorId])
+  Address     Address         @relation(fields: [addressId], references: [id])
+  Lessor      Lessor?         @relation(fields: [lessorId], references: [id])
+  Constraints JobConstraint[]
+  User        User[] // favorites
 }
 
-model lodging {
-  id          Int     @id @default(autoincrement())
-  url         String
-  Type        String?
-  area        Int?
-  city        String?
-  price       Int?
-  description String?
-  longitude Int
-  latitude Int
+model JobDomain {
+  id    Int    @id @default(autoincrement())
+  title String
+  Job   Job[]
 }
 
-model department {
-  id   Int     @id @default(autoincrement())
-  code Int?
-  city String?
+model JobSector {
+  id    Int    @id @default(autoincrement())
+  title String
+  Job   Job[]
+}
+
+model JobConstraint {
+  id    Int    @id @default(autoincrement())
+  title String
+  jobs  Job[]
+}
+
+model Address {
+  id             Int       @id @default(autoincrement())
+  place          String?
+  city           String?
+  zipCode        String?
+  department     String?
+  departmentCode String?
+  longitude      String
+  latitude       String
+  Lodging        Lodging[]
+  Job            Job[]
+  users          User[]    @relation(name: "Address")
 }
